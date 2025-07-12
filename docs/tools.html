@@ -1,15 +1,37 @@
 ﻿<!DOCTYPE html>
-<html lang='en'><head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0'/><title>Tools - IT Solutions Digital</title><link rel='stylesheet' href='style.css'></head>
+<html lang='en'>
+<head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+<title>Tools - IT Solutions Digital</title>
+<link rel='stylesheet' href='style.css'>
+</head>
 <body>
 <nav><a href='index.html'>Home</a><a href='services.html'>Services</a><a href='tools.html'>Tools</a><a href='contact.html'>Contact</a></nav>
+
 <h1>Network Tools</h1>
+
 <h2>Quick HTTP Ping</h2>
 <p>Test if a website is reachable:</p>
-<input type='text' id='pingurl' placeholder='e.g. example.com'><button onclick='pingSite()'>Ping</button><pre id='pingresult'></pre>
+<input type='text' id='pingurl' placeholder='e.g. example.com'>
+<button onclick='pingSite()'>Ping</button>
+<pre id='pingresult'></pre>
 
 <h2>DNS A Record Lookup</h2>
-<p>Check the A records for a domain (via dns.google):</p>
-<input type='text' id='dnsurl' placeholder='e.g. example.com'><button onclick='lookupDNS()'>Lookup</button><pre id='dnsresult'></pre>
+<p>Check A records for a domain:</p>
+<input type='text' id='dnsurl' placeholder='e.g. example.com'>
+<button onclick='lookupDNS()'>Lookup A</button>
+<pre id='dnsresult'></pre>
+
+<h2>MX Record Lookup</h2>
+<p>Check MX records for mail routing:</p>
+<input type='text' id='mxurl' placeholder='e.g. example.com'>
+<button onclick='lookupMX()'>Lookup MX</button>
+<pre id='mxresult'></pre>
+
+<h2>SPF TXT Record Viewer</h2>
+<p>Check SPF TXT record for a domain:</p>
+<input type='text' id='spfurl' placeholder='e.g. example.com'>
+<button onclick='lookupSPF()'>Lookup SPF</button>
+<pre id='spfresult'></pre>
 
 <script>
 function pingSite(){
@@ -28,11 +50,42 @@ function lookupDNS(){
       if(data.Answer){
         r.textContent='A Records:\\n'+data.Answer.map(a=>a.data).join('\\n');
       } else {
-        r.textContent='❌ No A records found or invalid domain.';
+        r.textContent='❌ No A records found.';
       }
     })
-    .catch(()=>r.textContent='❌ Failed to query DNS.');
+    .catch(()=>r.textContent='❌ DNS query failed.');
+}
+function lookupMX(){
+  const u=document.getElementById('mxurl').value, r=document.getElementById('mxresult');
+  r.textContent='Looking up...';
+  fetch('https://dns.google/resolve?name='+u+'&type=MX')
+    .then(res=>res.json())
+    .then(data=>{
+      if(data.Answer){
+        r.textContent='MX Records:\\n'+data.Answer.map(a=>a.data).join('\\n');
+      } else {
+        r.textContent='❌ No MX records found.';
+      }
+    })
+    .catch(()=>r.textContent='❌ DNS query failed.');
+}
+function lookupSPF(){
+  const u=document.getElementById('spfurl').value, r=document.getElementById('spfresult');
+  r.textContent='Looking up...';
+  fetch('https://dns.google/resolve?name='+u+'&type=TXT')
+    .then(res=>res.json())
+    .then(data=>{
+      if(data.Answer){
+        const spf = data.Answer.map(a=>a.data).find(txt=>txt.includes('v=spf1'));
+        r.textContent=spf ? 'SPF Record:\\n'+spf : '❌ No SPF record found.';
+      } else {
+        r.textContent='❌ No TXT records found.';
+      }
+    })
+    .catch(()=>r.textContent='❌ DNS query failed.');
 }
 </script>
+
 <footer>&copy; 2025 IT Solutions Digital</footer>
-</body></html>
+</body>
+</html>
