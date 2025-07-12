@@ -1,6 +1,12 @@
 ﻿<!DOCTYPE html>
 <html lang='en'>
-<head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0'/><title>IT Solutions Digital</title><link rel='stylesheet' href='style.css'></head>
+<head>
+<meta charset='UTF-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+<title>IT Solutions Digital</title>
+<link rel='icon' href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>I</text></svg>'/>
+<link rel='stylesheet' href='style.css'>
+</head>
 <body>
 <nav>
   <a href='index.html' class='active'>🏠 Home</a>
@@ -11,6 +17,7 @@
 <div class='hero'>
   <h1>Welcome to IT Solutions Digital</h1>
   <p>Your partner in secure, streamlined, professional IT operations.</p>
+  <button class='toggle' onclick='toggleDark()'>Toggle Dark Mode</button>
 </div>
 <section>
   <p>We focus on Microsoft 365, endpoint security, network optimization, and automation through PowerShell scripting. Our goal is to keep your business running efficiently, securely, and with peace of mind.</p>
@@ -19,4 +26,13 @@
 &copy; 2025 IT Solutions Digital<br>
 <a href='https://linkedin.com/in/yourprofile' target='_blank'>LinkedIn</a>
 </footer>
+<script>
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+}
+if(localStorage.getItem('theme')==='dark'){
+  document.body.classList.add('dark');
+}
+</script>
 </body></html>
