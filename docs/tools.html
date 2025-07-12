@@ -7,31 +7,46 @@
 <body>
 <nav><a href='index.html'>Home</a><a href='services.html'>Services</a><a href='tools.html'>Tools</a><a href='contact.html'>Contact</a></nav>
 
-<h1>Network Tools</h1>
+<h1>IT & Network Tools</h1>
 
 <h2>Quick HTTP Ping</h2>
-<p>Test if a website is reachable:</p>
 <input type='text' id='pingurl' placeholder='e.g. example.com'>
 <button onclick='pingSite()'>Ping</button>
 <pre id='pingresult'></pre>
 
 <h2>DNS A Record Lookup</h2>
-<p>Check A records for a domain:</p>
 <input type='text' id='dnsurl' placeholder='e.g. example.com'>
 <button onclick='lookupDNS()'>Lookup A</button>
 <pre id='dnsresult'></pre>
 
 <h2>MX Record Lookup</h2>
-<p>Check MX records for mail routing:</p>
 <input type='text' id='mxurl' placeholder='e.g. example.com'>
 <button onclick='lookupMX()'>Lookup MX</button>
 <pre id='mxresult'></pre>
 
 <h2>SPF TXT Record Viewer</h2>
-<p>Check SPF TXT record for a domain:</p>
 <input type='text' id='spfurl' placeholder='e.g. example.com'>
 <button onclick='lookupSPF()'>Lookup SPF</button>
 <pre id='spfresult'></pre>
+
+<h2>Your Public IP Address</h2>
+<button onclick='getIP()'>Get My IP</button>
+<pre id='ipresult'></pre>
+
+<h2>Reverse DNS Lookup</h2>
+<input type='text' id='revip' placeholder='e.g. 8.8.8.8'>
+<button onclick='reverseDNS()'>Lookup PTR</button>
+<pre id='ptrresult'></pre>
+
+<h2>HTTPS Check</h2>
+<input type='text' id='httpsurl' placeholder='e.g. example.com'>
+<button onclick='checkHTTPS()'>Check HTTPS</button>
+<pre id='httpsresult'></pre>
+
+<h2>HTTP Header Viewer</h2>
+<input type='text' id='headerurl' placeholder='e.g. example.com'>
+<button onclick='viewHeaders()'>View Headers</button>
+<pre id='headerresult'></pre>
 
 <script>
 function pingSite(){
@@ -46,13 +61,8 @@ function lookupDNS(){
   r.textContent='Looking up...';
   fetch('https://dns.google/resolve?name='+u+'&type=A')
     .then(res=>res.json())
-    .then(data=>{
-      if(data.Answer){
-        r.textContent='A Records:\\n'+data.Answer.map(a=>a.data).join('\\n');
-      } else {
-        r.textContent='❌ No A records found.';
-      }
-    })
+    .then(data=>{ if(data.Answer){ r.textContent='A Records:\\n'+data.Answer.map(a=>a.data).join('\\n'); }
+      else{ r.textContent='❌ No A records.';}})
     .catch(()=>r.textContent='❌ DNS query failed.');
 }
 function lookupMX(){
@@ -60,13 +70,8 @@ function lookupMX(){
   r.textContent='Looking up...';
   fetch('https://dns.google/resolve?name='+u+'&type=MX')
     .then(res=>res.json())
-    .then(data=>{
-      if(data.Answer){
-        r.textContent='MX Records:\\n'+data.Answer.map(a=>a.data).join('\\n');
-      } else {
-        r.textContent='❌ No MX records found.';
-      }
-    })
+    .then(data=>{ if(data.Answer){ r.textContent='MX Records:\\n'+data.Answer.map(a=>a.data).join('\\n'); }
+      else{ r.textContent='❌ No MX records.';}})
     .catch(()=>r.textContent='❌ DNS query failed.');
 }
 function lookupSPF(){
@@ -78,11 +83,43 @@ function lookupSPF(){
       if(data.Answer){
         const spf = data.Answer.map(a=>a.data).find(txt=>txt.includes('v=spf1'));
         r.textContent=spf ? 'SPF Record:\\n'+spf : '❌ No SPF record found.';
-      } else {
-        r.textContent='❌ No TXT records found.';
-      }
-    })
+      } else { r.textContent='❌ No TXT records.';}})
     .catch(()=>r.textContent='❌ DNS query failed.');
+}
+function getIP(){
+  const r=document.getElementById('ipresult');
+  r.textContent='Fetching...';
+  fetch('https://api.ipify.org?format=json')
+    .then(res=>res.json())
+    .then(data=>r.textContent='🌍 Your IP: '+data.ip)
+    .catch(()=>r.textContent='❌ Could not get IP.');
+}
+function reverseDNS(){
+  const u=document.getElementById('revip').value, r=document.getElementById('ptrresult');
+  r.textContent='Looking up...';
+  fetch('https://dns.google/resolve?name='+u+'.in-addr.arpa&type=PTR')
+    .then(res=>res.json())
+    .then(data=>{ if(data.Answer){ r.textContent='PTR Record:\\n'+data.Answer.map(a=>a.data).join('\\n'); }
+      else{ r.textContent='❌ No PTR record.';}})
+    .catch(()=>r.textContent='❌ Reverse DNS failed.');
+}
+function checkHTTPS(){
+  const u=document.getElementById('httpsurl').value, r=document.getElementById('httpsresult');
+  r.textContent='Checking HTTPS...';
+  fetch('https://'+u,{mode:'no-cors'})
+    .then(()=>r.textContent='✅ HTTPS loads fine!')
+    .catch(()=>r.textContent='❌ HTTPS connection failed.');
+}
+function viewHeaders(){
+  const u=document.getElementById('headerurl').value, r=document.getElementById('headerresult');
+  r.textContent='Fetching headers...';
+  fetch('https://'+u, {method:'HEAD'})
+    .then(res=>{
+      let headers='';
+      for (let pair of res.headers.entries()) { headers += pair[0]+': '+pair[1]+'\\n'; }
+      r.textContent=headers || '✅ Headers fetched (no displayable headers).';
+    })
+    .catch(()=>r.textContent='❌ Failed to fetch headers.');
 }
 </script>
 
