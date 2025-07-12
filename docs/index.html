@@ -1,20 +1,12 @@
 ﻿<!DOCTYPE html>
 <html lang='en'>
-<head>
-  <meta charset='UTF-8' />
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
-  <title>IT Solutions Digital</title>
-  <link rel='stylesheet' href='style.css'>
-</head>
+<head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0'/><title>IT Solutions Digital</title><link rel='stylesheet' href='style.css'></head>
 <body>
-  <nav>
-    <a href='index.html'>Home</a>
-    <a href='services.html'>Services</a>
-    <a href='contact.html'>Contact</a>
-  </nav>
-  <h1>Welcome to IT Solutions Digital</h1>
-  <p>We provide specialized IT support and solutions for businesses. From Microsoft 365 to network security and automation, we keep your technology running reliably and securely.</p>
-  <p>Explore our services to see how we can support your operations.</p>
-  <footer>&copy; 2025 IT Solutions Digital</footer>
-</body>
-</html>
+<nav><a href='index.html'>Home</a><a href='services.html'>Services</a><a href='contact.html'>Contact</a></nav>
+<h1>Welcome to IT Solutions Digital</h1>
+<p>We provide specialized IT support and solutions for businesses. From Microsoft 365 to endpoint security, scripting, and cloud consulting, we help keep your tech running efficiently and securely.</p>
+<h2>Quick Network Ping</h2>
+<p>Test if a website is reachable (simple HTTP check):</p>
+<input type='text' id='url' placeholder='e.g. example.com'><button onclick='pingSite()'>Ping</button><pre id='result'></pre>
+<script>function pingSite(){const u=document.getElementById('url').value,r=document.getElementById('result');r.textContent='Checking...';fetch('https://'+u,{mode:'no-cors'}).then(()=>r.textContent='✅ Site is reachable!').catch(()=>r.textContent='❌ Could not reach the site.');}</script>
+<footer>&copy; 2025 IT Solutions Digital</footer></body></html>
