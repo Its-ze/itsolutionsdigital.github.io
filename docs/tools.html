@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang='en'><head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0'/><title>Tools - IT Solutions Digital</title><link rel='stylesheet' href='style.css'></head>
+<body>
+<nav><a href='index.html'>Home</a><a href='services.html'>Services</a><a href='tools.html'>Tools</a><a href='contact.html'>Contact</a></nav>
+<h1>Network Tools</h1>
+<h2>Quick HTTP Ping</h2>
+<p>Test if a website is reachable:</p>
+<input type='text' id='pingurl' placeholder='e.g. example.com'><button onclick='pingSite()'>Ping</button><pre id='pingresult'></pre>
+
+<h2>DNS A Record Lookup</h2>
+<p>Check the A records for a domain (via dns.google):</p>
+<input type='text' id='dnsurl' placeholder='e.g. example.com'><button onclick='lookupDNS()'>Lookup</button><pre id='dnsresult'></pre>
+
+<script>
+function pingSite(){
+  const u=document.getElementById('pingurl').value, r=document.getElementById('pingresult');
+  r.textContent='Checking...';
+  fetch('https://'+u,{mode:'no-cors'})
+    .then(()=>r.textContent='✅ Site is reachable!')
+    .catch(()=>r.textContent='❌ Could not reach the site.');
+}
+function lookupDNS(){
+  const u=document.getElementById('dnsurl').value, r=document.getElementById('dnsresult');
+  r.textContent='Looking up...';
+  fetch('https://dns.google/resolve?name='+u+'&type=A')
+    .then(res=>res.json())
+    .then(data=>{
+      if(data.Answer){
+        r.textContent='A Records:\\n'+data.Answer.map(a=>a.data).join('\\n');
+      } else {
+        r.textContent='❌ No A records found or invalid domain.';
+      }
+    })
+    .catch(()=>r.textContent='❌ Failed to query DNS.');
+}
+</script>
+<footer>&copy; 2025 IT Solutions Digital</footer>
+</body></html>
