@@ -1,16 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang='en'>
 <head><meta charset='UTF-8' /><meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 <title>Tools - IT Solutions Digital</title>
 <link rel='stylesheet' href='style.css'>
 </head>
 <body>
-<nav>
-  <a href='index.html'>🏠 Home</a>
-  <a href='services.html'>💼 Services</a>
-  <a href='tools.html'>🛠 Tools</a>
-  <a href='contact.html'>✉ Contact</a>
-</nav>
+<nav><a href="index.html">?? Home</a><a href="services.html">?? Services</a><a href="tools.html" class="active">?? Tools</a><a href="contact.html">? Contact</a></nav>
 
 <h1>IT & Network Tools</h1>
 
@@ -58,8 +53,8 @@ function pingSite(){
   const u=document.getElementById('pingurl').value, r=document.getElementById('pingresult');
   r.textContent='Checking...';
   fetch('https://'+u,{mode:'no-cors'})
-    .then(()=>r.textContent='✅ Site is reachable!')
-    .catch(()=>r.textContent='❌ Could not reach the site.');
+    .then(()=>r.textContent='? Site is reachable!')
+    .catch(()=>r.textContent='? Could not reach the site.');
 }
 function lookupDNS(){
   const u=document.getElementById('dnsurl').value, r=document.getElementById('dnsresult');
@@ -67,8 +62,8 @@ function lookupDNS(){
   fetch('https://dns.google/resolve?name='+u+'&type=A')
     .then(res=>res.json())
     .then(data=>{ if(data.Answer){ r.textContent='A Records:\\n'+data.Answer.map(a=>a.data).join('\\n'); }
-      else{ r.textContent='❌ No A records.';}})
-    .catch(()=>r.textContent='❌ DNS query failed.');
+      else{ r.textContent='? No A records.';}})
+    .catch(()=>r.textContent='? DNS query failed.');
 }
 function lookupMX(){
   const u=document.getElementById('mxurl').value, r=document.getElementById('mxresult');
@@ -76,8 +71,8 @@ function lookupMX(){
   fetch('https://dns.google/resolve?name='+u+'&type=MX')
     .then(res=>res.json())
     .then(data=>{ if(data.Answer){ r.textContent='MX Records:\\n'+data.Answer.map(a=>a.data).join('\\n'); }
-      else{ r.textContent='❌ No MX records.';}})
-    .catch(()=>r.textContent='❌ DNS query failed.');
+      else{ r.textContent='? No MX records.';}})
+    .catch(()=>r.textContent='? DNS query failed.');
 }
 function lookupSPF(){
   const u=document.getElementById('spfurl').value, r=document.getElementById('spfresult');
@@ -87,17 +82,17 @@ function lookupSPF(){
     .then(data=>{
       if(data.Answer){
         const spf = data.Answer.map(a=>a.data).find(txt=>txt.includes('v=spf1'));
-        r.textContent=spf ? 'SPF Record:\\n'+spf : '❌ No SPF record found.';
-      } else { r.textContent='❌ No TXT records.';}})
-    .catch(()=>r.textContent='❌ DNS query failed.');
+        r.textContent=spf ? 'SPF Record:\\n'+spf : '? No SPF record found.';
+      } else { r.textContent='? No TXT records.';}})
+    .catch(()=>r.textContent='? DNS query failed.');
 }
 function getIP(){
   const r=document.getElementById('ipresult');
   r.textContent='Fetching...';
   fetch('https://api.ipify.org?format=json')
     .then(res=>res.json())
-    .then(data=>r.textContent='🌍 Your IP: '+data.ip)
-    .catch(()=>r.textContent='❌ Could not get IP.');
+    .then(data=>r.textContent='?? Your IP: '+data.ip)
+    .catch(()=>r.textContent='? Could not get IP.');
 }
 function reverseDNS(){
   const u=document.getElementById('revip').value, r=document.getElementById('ptrresult');
@@ -105,15 +100,15 @@ function reverseDNS(){
   fetch('https://dns.google/resolve?name='+u+'.in-addr.arpa&type=PTR')
     .then(res=>res.json())
     .then(data=>{ if(data.Answer){ r.textContent='PTR Record:\\n'+data.Answer.map(a=>a.data).join('\\n'); }
-      else{ r.textContent='❌ No PTR record.';}})
-    .catch(()=>r.textContent='❌ Reverse DNS failed.');
+      else{ r.textContent='? No PTR record.';}})
+    .catch(()=>r.textContent='? Reverse DNS failed.');
 }
 function checkHTTPS(){
   const u=document.getElementById('httpsurl').value, r=document.getElementById('httpsresult');
   r.textContent='Checking HTTPS...';
   fetch('https://'+u,{mode:'no-cors'})
-    .then(()=>r.textContent='✅ HTTPS loads fine!')
-    .catch(()=>r.textContent='❌ HTTPS connection failed.');
+    .then(()=>r.textContent='? HTTPS loads fine!')
+    .catch(()=>r.textContent='? HTTPS connection failed.');
 }
 function viewHeaders(){
   const u=document.getElementById('headerurl').value, r=document.getElementById('headerresult');
@@ -122,13 +117,14 @@ function viewHeaders(){
     .then(res=>{
       let headers='';
       for (let pair of res.headers.entries()) { headers += pair[0]+': '+pair[1]+'\\n'; }
-      r.textContent=headers || '✅ Headers fetched (no displayable headers).';
+      r.textContent=headers || '? Headers fetched (no displayable headers).';
     })
-    .catch(()=>r.textContent='❌ Failed to fetch headers.');
+    .catch(()=>r.textContent='? Failed to fetch headers.');
 }
 </script>
 
-<footer>&copy; 2025 IT Solutions Digital</footer>
+<footer>&copy; 2025 IT Solutions Digital<br><a href="https://www.linkedin.com/in/zach-skeens-6743b6274/" target="_blank">LinkedIn</a> | <a href="https://github.com/Its-ze" target="_blank"><img src="https://img.shields.io/badge/GitHub-Its--ze-181717?style=for-the-badge&logo=github" alt="GitHub badge"></a><br><img src="https://ghchart.rshah.org/Its-ze" alt="GitHub contribution graph"></footer>
 </body>
 </html>
+
 
