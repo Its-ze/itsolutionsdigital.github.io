@@ -18,16 +18,22 @@ nav {
   text-align: center;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: all 0.3s;
+  max-width: 900px;
+  margin: 0 auto 40px auto;
 }
 nav a {
-  margin: 0 20px;
+  margin: 0 15px;
+  padding: 8px 5px;
   text-decoration: none;
   color: #005fa3;
   font-weight: bold;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.2s;
 }
 nav a:hover {
   color: #003f73;
   text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border-bottom: 2px solid #003f73;
 }
 .hero {
   background: #eaf4fb;
