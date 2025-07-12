@@ -5,19 +5,19 @@ body {
   margin: 50px auto;
   padding: 0 20px;
   line-height: 1.8;
-  color: #333;
-  background: #f7f9fc;
+  color: #ddd;
+  background: #1e1e1e;
   transition: background 0.4s, color 0.4s;
 }
 h1, h2 {
-  color: #005fa3;
+  color: #9cf;
 }
 nav {
-  background: #fff;
-  border-bottom: 3px solid #005fa3;
+  background: #2c2c2c;
+  border-bottom: 3px solid #3399ff;
   padding: 15px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
   transition: all 0.3s;
   max-width: 900px;
   margin: 0 auto 40px auto;
@@ -26,28 +26,28 @@ nav a {
   margin: 0 15px;
   padding: 8px 5px;
   text-decoration: none;
-  color: #005fa3;
+  color: #9cf;
   font-weight: bold;
   border-bottom: 2px solid transparent;
   transition: border-bottom 0.2s, color 0.2s;
 }
 nav a:hover {
-  color: #003f73;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border-bottom: 2px solid #003f73;
+  color: #6ab;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  border-bottom: 2px solid #6ab;
 }
 nav a.active {
-  border-bottom: 2px solid #003f73;
-  color: #003f73;
+  border-bottom: 2px solid #6ab;
+  color: #6ab;
 }
 .hero {
-  background: #eaf4fb;
+  background: #2c2c2c;
   padding: 30px;
   text-align: center;
   border-radius: 8px;
   margin-bottom: 40px;
   animation: fadein 1.2s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 section {
   margin-bottom: 40px;
@@ -55,48 +55,13 @@ section {
 footer {
   margin-top: 60px;
   font-size: 0.9em;
-  color: #666;
+  color: #aaa;
   text-align: center;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #444;
   padding-top: 20px;
 }
 ul {
   padding-left: 25px;
-}
-button.toggle {
-  margin-top: 15px;
-  padding: 6px 12px;
-  border: none;
-  background: #005fa3;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-}
-button.toggle:hover {
-  background: #003f73;
-}
-body.dark {
-  background: #1e1e1e;
-  color: #ddd;
-}
-body.dark nav {
-  background: #2c2c2c;
-  border-bottom: 3px solid #3399ff;
-}
-body.dark nav a {
-  color: #9cf;
-}
-body.dark nav a:hover {
-  color: #6ab;
-  border-bottom: 2px solid #6ab;
-}
-body.dark .hero {
-  background: #2c2c2c;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-body.dark footer {
-  border-top: 1px solid #444;
-  color: #aaa;
 }
 @keyframes fadein {
   from { opacity: 0; }

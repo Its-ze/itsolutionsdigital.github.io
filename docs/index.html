@@ -9,7 +9,7 @@
 </head>
 <body>
 <nav>
-  <a href='index.html'>🏠 Home</a>
+  <a href='index.html' class='active'>🏠 Home</a>
   <a href='services.html'>💼 Services</a>
   <a href='tools.html'>🛠 Tools</a>
   <a href='contact.html'>✉ Contact</a>
@@ -17,7 +17,6 @@
 <div class='hero'>
   <h1>Welcome to IT Solutions Digital</h1>
   <p>Your partner in secure, streamlined, professional IT operations.</p>
-  <button class='toggle' onclick='toggleDark()'>Toggle Dark Mode</button>
 </div>
 <section>
   <p>We focus on Microsoft 365, endpoint security, network optimization, and automation through PowerShell scripting. Our goal is to keep your business running efficiently, securely, and with peace of mind.</p>
@@ -26,14 +25,4 @@
 &copy; 2025 IT Solutions Digital<br>
 <a href='https://www.linkedin.com/in/zach-skeens-6743b6274/' target='_blank'>LinkedIn</a>
 </footer>
-<script>
-function toggleDark(){
-  document.body.classList.toggle('dark');
-  localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-}
-if(localStorage.getItem('theme')==='dark'){
-  document.body.classList.add('dark');
-}
-</script>
 </body></html>
-

@@ -10,39 +10,28 @@
 <body>
 <nav>
   <a href='index.html'>🏠 Home</a>
-  <a href='services.html'>💼 Services</a>
+  <a href='services.html' class='active'>💼 Services</a>
   <a href='tools.html'>🛠 Tools</a>
   <a href='contact.html'>✉ Contact</a>
 </nav>
 <div class='hero'>
   <h1>Our IT Services</h1>
   <p>Solutions designed to keep your business productive & secure.</p>
-  <button class='toggle' onclick='toggleDark()'>Toggle Dark Mode</button>
 </div>
 <section>
   <ul>
-    <li>?? Microsoft 365 & Exchange: mailboxes, transport rules, SPF/DKIM/DMARC</li>
-    <li>?? SharePoint & Teams deployment and governance</li>
-    <li>?? BitLocker endpoint encryption with Azure AD key sync</li>
-    <li>?? PowerShell automation: compliance, malware scans, cleanups</li>
-    <li>?? Cloud consulting & migrations (Dropbox, Nextcloud, Koofr)</li>
-    <li>?? Zoom Room + Outlook calendar integrations</li>
-    <li>?? Network, DNS, VPN, Cloudflare optimization</li>
-    <li>?? Security with Defender, Bitdefender & staff training</li>
+    <li>💼 Microsoft 365 & Exchange: mailboxes, transport rules, SPF/DKIM/DMARC</li>
+    <li>🗂 SharePoint & Teams deployment and governance</li>
+    <li>🔒 BitLocker endpoint encryption with Azure AD key sync</li>
+    <li>🛠 PowerShell automation: compliance, malware scans, cleanups</li>
+    <li>☁️ Cloud consulting & migrations (Dropbox, Nextcloud, Koofr)</li>
+    <li>📅 Zoom Room + Outlook calendar integrations</li>
+    <li>🌐 Network, DNS, VPN, Cloudflare optimization</li>
+    <li>🛡 Security with Defender, Bitdefender & staff training</li>
   </ul>
 </section>
 <footer>
 &copy; 2025 IT Solutions Digital<br>
 <a href='https://www.linkedin.com/in/zach-skeens-6743b6274/' target='_blank'>LinkedIn</a>
 </footer>
-<script>
-function toggleDark(){
-  document.body.classList.toggle('dark');
-  localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-}
-if(localStorage.getItem('theme')==='dark'){
-  document.body.classList.add('dark');
-}
-</script>
 </body></html>
-
