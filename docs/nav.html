@@ -1,7 +1,20 @@
 <!-- nav.html: Shared navigation bar for all pages -->
-<nav aria-label="Main navigation" class="main-nav" style="opacity:1;transition:opacity 0.5s;">
-  <a href="index.html">🏠 Home</a>
-  <a href="services.html">🛠️ Services</a>
-  <a href="contact.html">✉️ Contact</a>
-  <a href="ticket.html" target="_blank" class="active">🎫 Submit Ticket</a>
+<nav aria-label="Main navigation" class="main-nav">
+  <a href="index.html" id="nav-home">🏠 Home</a>
+  <a href="services.html" id="nav-services">🛠️ Services</a>
+  <a href="contact.html" id="nav-contact">✉️ Contact</a>
+  <a href="ticket.html" id="nav-ticket" target="_blank">🎫 Submit Ticket</a>
 </nav>
+<script>
+// Highlight active tab based on current page
+const navLinks = {
+  'index.html': 'nav-home',
+  'services.html': 'nav-services',
+  'contact.html': 'nav-contact',
+  'ticket.html': 'nav-ticket'
+};
+const current = Object.keys(navLinks).find(p => window.location.pathname.endsWith(p));
+if (current) {
+  document.getElementById(navLinks[current]).classList.add('active');
+}
+</script>
