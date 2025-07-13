@@ -7,25 +7,35 @@
 <link rel='icon' href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>I</text></svg>'/>
 <link rel='stylesheet' href='style.css'>
 </head>
-</body>
-<nav aria-label="Main navigation" class="main-nav"><a href="index.html" class="active">🏠 Home</a><a href="services.html">🛠️ Services</a><a href="tools.html">🧰 Tools</a><a href="contact.html">✉️ Contact</a><a href="ticket.html">🎫 Submit Ticket</a></nav>
-<div class='hero card'>
-  <h1 class="accent">Our IT Services</h1>
-  <p>Solutions designed to keep your business productive & secure.</p>
+<body style="opacity:0;transition:opacity 0.5s;">
+<div id="navbar"><div class="loader" style="text-align:center;padding:1em;"><span>Loading navigation...</span></div></div>
+<div id="mainContent">
+  <div class='hero card'>
+    <h1 class="accent">Our IT Services</h1>
+    <p>Solutions designed to keep your business productive & secure.</p>
+  </div>
+  <section class="card">
+    <ul>
+      <li>💼 Microsoft 365 & Exchange: mailboxes, transport rules, SPF/DKIM/DMARC</li>
+      <li>👥 SharePoint & Teams deployment and governance</li>
+      <li>🔒 BitLocker endpoint encryption with Azure AD key sync</li>
+      <li>⚡ PowerShell automation: compliance, malware scans, cleanups</li>
+      <li>☁️ Cloud consulting & migrations (Dropbox, Nextcloud, Koofr)</li>
+      <li>📅 Zoom Room + Outlook calendar integrations</li>
+      <li>🌐 Network, DNS, VPN, Cloudflare optimization</li>
+      <li>🛡️ Security with Defender, Bitdefender & staff training</li>
+    </ul>
+  </section>
 </div>
-<section class="card">
-  <ul>
-    <li>💼 Microsoft 365 & Exchange: mailboxes, transport rules, SPF/DKIM/DMARC</li>
-    <li>👥 SharePoint & Teams deployment and governance</li>
-    <li>🔒 BitLocker endpoint encryption with Azure AD key sync</li>
-    <li>⚡ PowerShell automation: compliance, malware scans, cleanups</li>
-    <li>☁️ Cloud consulting & migrations (Dropbox, Nextcloud, Koofr)</li>
-    <li>📅 Zoom Room + Outlook calendar integrations</li>
-    <li>🌐 Network, DNS, VPN, Cloudflare optimization</li>
-    <li>🛡️ Security with Defender, Bitdefender & staff training</li>
-  </ul>
-</section>
-<footer>&copy; 2025 IT Solutions Digital<br><a href="https://www.linkedin.com/in/zach-skeens-6743b6274/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <a href="https://github.com/Its-ze" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/GitHub-Its--ze-181717?style=for-the-badge&logo=github" alt="GitHub badge for Its-ze"></a><br><img src="https://ghchart.rshah.org/Its-ze" alt="GitHub contribution graph for Its-ze"></footer>
+<div id="footer"><div class="loader" style="text-align:center;padding:1em;"><span>Loading footer...</span></div></div>
+<script>
+Promise.all([
+  fetch('nav.html').then(r => r.text()).then(html => { document.getElementById('navbar').innerHTML = html; }),
+  fetch('footer.html').then(r => r.text()).then(html => { document.getElementById('footer').innerHTML = html; })
+]).then(() => {
+  document.body.style.opacity = 1;
+});
+</script>
 </body></html>
 
 

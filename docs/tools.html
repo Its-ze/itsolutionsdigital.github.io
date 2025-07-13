@@ -5,165 +5,166 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 <title>Tools - IT Solutions Digital</title>
 <link rel='icon' href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>I</text></svg>'/>
-<link rel='stylesheet' href='style.css'>
-</head>
-
-
-
-<body>
-<nav aria-label="Main navigation" class="main-nav"><a href="index.html" class="active">🏠 Home</a><a href="services.html">🛠️ Services</a><a href="tools.html">🧰 Tools</a><a href="contact.html">✉️ Contact</a><a href="ticket.html">🎫 Submit Ticket</a></nav>
-
-<h1 class="accent">IT & Network Tools</h1>
-
-<div class="tabs card">
-  <button class="tab-btn active" onclick="showTab('network')">Network & IP</button>
-  <button class="tab-btn" onclick="showTab('dns')">DNS</button>
-  <button class="tab-btn" onclick="showTab('http')">HTTP</button>
-  <button class="tab-btn" onclick="showTab('extra')">Extra</button>
+<body style="opacity:0;transition:opacity 0.5s;">
+<div id="navbar"><div class="loader" style="text-align:center;padding:1em;"><span>Loading navigation...</span></div></div>
+<div id="mainContent">
+  <h1 class="accent">IT & Network Tools</h1>
+  <div class="tabs card">
+    <button class="tab-btn active" onclick="showTab('network')">Network & IP</button>
+    <button class="tab-btn" onclick="showTab('dns')">DNS</button>
+    <button class="tab-btn" onclick="showTab('http')">HTTP</button>
+    <button class="tab-btn" onclick="showTab('extra')">Extra</button>
+  </div>
+  <section id="network" class="tab-content" style="display:block;">
+    <div class="tool-card">
+      <h2>Network & IP Tools</h2>
+      <div>
+        <label for="ipresult"><strong>Your Public IP Address</strong><br><span class="desc">Find out your current public IP address.</span></label><br>
+        <button onclick="getIP()">Get My IP</button>
+        <button onclick="copyResult('ipresult')">📋</button>
+        <pre id="ipresult"></pre>
+      </div>
+      <div>
+        <label for="revip"><strong>Reverse DNS Lookup</strong><br><span class="desc">Get the PTR record for an IP address.</span></label><br>
+        <input type="text" id="revip" placeholder="e.g. 8.8.8.8">
+        <button onclick="reverseDNS()">Lookup PTR</button>
+        <button onclick="copyResult('ptrresult')">📋</button>
+        <pre id="ptrresult"></pre>
+      </div>
+    </div>
+  </section>
+  <section id="dns" class="tab-content" style="display:none;">
+    <div class="tool-card">
+      <h2>DNS Tools</h2>
+      <div>
+        <label for="dnscomboinput"><strong>DNS Lookup</strong><br><span class="desc">Enter a domain and select the record type to search.</span></label><br>
+        <input type="text" id="dnscomboinput" placeholder="e.g. example.com">
+        <select id="dnsrecordtype">
+          <option value="A">A (IPv4)</option>
+          <option value="AAAA">AAAA (IPv6)</option>
+          <option value="MX">MX (Mail)</option>
+          <option value="SPF">SPF (TXT)</option>
+          <option value="CNAME">CNAME</option>
+        </select>
+        <button onclick="lookupDNSCombo()">Lookup</button>
+        <button onclick="copyResult('dnscomboresult')">📋</button>
+        <pre id="dnscomboresult"></pre>
+      </div>
+    </div>
+  </section>
+  <section id="http" class="tab-content" style="display:none;">
+    <div class="tool-card">
+      <h2>HTTP Tools</h2>
+      <div>
+        <label for="pingurl"><strong>Quick HTTP Ping</strong><br><span class="desc">Check if a website is reachable over HTTP.</span></label><br>
+        <input type="text" id="pingurl" placeholder="e.g. example.com">
+        <button onclick="pingSite()">Ping</button>
+        <button onclick="copyResult('pingresult')">📋</button>
+        <pre id="pingresult"></pre>
+      </div>
+      <div>
+        <label for="httpsurl"><strong>HTTPS Check</strong><br><span class="desc">Verify if a site supports HTTPS.</span></label><br>
+        <input type="text" id="httpsurl" placeholder="e.g. example.com">
+        <button onclick="checkHTTPS()">Check HTTPS</button>
+        <button onclick="copyResult('httpsresult')">📋</button>
+        <pre id="httpsresult"></pre>
+      </div>
+      <div>
+        <label for="headerurl"><strong>HTTP Header Viewer</strong><br><span class="desc">View HTTP response headers for a site.</span></label><br>
+        <input type="text" id="headerurl" placeholder="e.g. example.com">
+        <button onclick="viewHeaders()">View Headers</button>
+        <button onclick="copyResult('headerresult')">📋</button>
+        <pre id="headerresult"></pre>
+      </div>
+    </div>
+  </section>
+  <section id="extra" class="tab-content" style="display:none;">
+    <div class="tool-card">
+      <h2>Extra Tools</h2>
+      <div class="tool-row">
+        <div class="tool-block">
+          <label for="whoisurl"><strong>WHOIS Lookup</strong><br><span class="desc">Get WHOIS info for a domain (uses public API).</span></label><br>
+          <input type="text" id="whoisurl" placeholder="e.g. example.com">
+          <button onclick="lookupWHOIS()">Lookup WHOIS</button>
+          <button onclick="copyResult('whoisresult')">📋</button>
+          <pre id="whoisresult"></pre>
+        </div>
+        <div class="tool-block">
+          <label for="sslurl"><strong>SSL Certificate Info</strong><br><span class="desc">Get SSL certificate details for a domain (uses public API).</span></label><br>
+          <input type="text" id="sslurl" placeholder="e.g. example.com">
+          <button onclick="lookupSSL()">Get SSL Info</button>
+          <button onclick="copyResult('sslresult')">📋</button>
+          <pre id="sslresult"></pre>
+        </div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-block">
+          <label><strong>Random Joke</strong><br><span class="desc">Get a random programming joke.</span></label><br>
+          <button onclick="getJoke()">Tell Me a Joke</button>
+          <pre id="jokeResult"></pre>
+        </div>
+        <div class="tool-block">
+          <label><strong>Tech Quote</strong><br><span class="desc">Get a random tech quote.</span></label><br>
+          <button onclick="getQuote()">Inspire Me</button>
+          <pre id="quoteResult"></pre>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <label for="qrinput"><strong>QR Code Generator</strong><br><span class="desc">Generate a QR code for any text or URL.</span></label><br>
+        <input type="text" id="qrinput" placeholder="Enter text or URL">
+        <button onclick="generateQR()">Generate QR</button>
+        <div id="qrResult"></div>
+      </div>
+      <div>
+        <label for="pwlength"><strong>Password Generator</strong><br><span class="desc">Generate a random password.</span></label><br>
+        <input type="number" id="pwlength" min="6" max="32" value="12" style="width:60px;">
+        <button onclick="generatePassword()">Generate</button>
+        <button onclick="copyResult('pwResult')">📋</button>
+        <pre id="pwResult"></pre>
+      </div>
+      <hr>
+      <div>
+        <label for="b64input"><strong>Base64 Encode/Decode</strong><br><span class="desc">Encode or decode text in Base64.</span></label><br>
+        <input type="text" id="b64input" placeholder="Enter text">
+        <button onclick="encodeBase64()">Encode</button>
+        <button onclick="decodeBase64()">Decode</button>
+        <pre id="b64Result"></pre>
+      </div>
+      <div>
+        <label for="colorinput"><strong>Color Picker</strong><br><span class="desc">Pick a color and get its value.</span></label><br>
+        <input type="color" id="colorinput" value="#3399ff" onchange="showColor()">
+        <span id="colorResult" style="margin-left:10px;"></span>
+      </div>
+      <hr>
+      <div>
+        <label for="httpcodeinput"><strong>HTTP Status Code Lookup</strong><br><span class="desc">Enter a code to get its meaning.</span></label><br>
+        <input type="number" id="httpcodeinput" placeholder="e.g. 404" style="width:80px;">
+        <button onclick="lookupHTTPCode()">Lookup</button>
+        <pre id="httpcodeResult"></pre>
+      </div>
+      <hr>
+      <div id="easterEgg" style="display:none;color:#ff0;font-weight:bold;text-align:center;font-size:1.2em;">🎉 You found the secret! 🎉</div>
+    </div>
+  </section>
 </div>
-
-<section id="network" class="tab-content" style="display:block;">
-  <div class="tool-card">
-    <h2>Network & IP Tools</h2>
-    <div>
-      <label for="ipresult"><strong>Your Public IP Address</strong><br><span class="desc">Find out your current public IP address.</span></label><br>
-      <button onclick="getIP()">Get My IP</button>
-      <button onclick="copyResult('ipresult')">📋</button>
-      <pre id="ipresult"></pre>
-    </div>
-    <div>
-      <label for="revip"><strong>Reverse DNS Lookup</strong><br><span class="desc">Get the PTR record for an IP address.</span></label><br>
-      <input type="text" id="revip" placeholder="e.g. 8.8.8.8">
-      <button onclick="reverseDNS()">Lookup PTR</button>
-      <button onclick="copyResult('ptrresult')">📋</button>
-      <pre id="ptrresult"></pre>
-    </div>
-  </div>
-</section>
-
-
-<section id="dns" class="tab-content" style="display:none;">
-  <div class="tool-card">
-    <h2>DNS Tools</h2>
-    <div>
-      <label for="dnscomboinput"><strong>DNS Lookup</strong><br><span class="desc">Enter a domain and select the record type to search.</span></label><br>
-      <input type="text" id="dnscomboinput" placeholder="e.g. example.com">
-      <select id="dnsrecordtype">
-        <option value="A">A (IPv4)</option>
-        <option value="AAAA">AAAA (IPv6)</option>
-        <option value="MX">MX (Mail)</option>
-        <option value="SPF">SPF (TXT)</option>
-        <option value="CNAME">CNAME</option>
-      </select>
-      <button onclick="lookupDNSCombo()">Lookup</button>
-      <button onclick="copyResult('dnscomboresult')">📋</button>
-      <pre id="dnscomboresult"></pre>
-    </div>
-  </div>
-</section>
-
-<section id="http" class="tab-content" style="display:none;">
-  <div class="tool-card">
-    <h2>HTTP Tools</h2>
-    <div>
-      <label for="pingurl"><strong>Quick HTTP Ping</strong><br><span class="desc">Check if a website is reachable over HTTP.</span></label><br>
-      <input type="text" id="pingurl" placeholder="e.g. example.com">
-      <button onclick="pingSite()">Ping</button>
-      <button onclick="copyResult('pingresult')">📋</button>
-      <pre id="pingresult"></pre>
-    </div>
-    <div>
-      <label for="httpsurl"><strong>HTTPS Check</strong><br><span class="desc">Verify if a site supports HTTPS.</span></label><br>
-      <input type="text" id="httpsurl" placeholder="e.g. example.com">
-      <button onclick="checkHTTPS()">Check HTTPS</button>
-      <button onclick="copyResult('httpsresult')">📋</button>
-      <pre id="httpsresult"></pre>
-    </div>
-    <div>
-      <label for="headerurl"><strong>HTTP Header Viewer</strong><br><span class="desc">View HTTP response headers for a site.</span></label><br>
-      <input type="text" id="headerurl" placeholder="e.g. example.com">
-      <button onclick="viewHeaders()">View Headers</button>
-      <button onclick="copyResult('headerresult')">📋</button>
-      <pre id="headerresult"></pre>
-    </div>
-  </div>
-</section>
-
-<section id="extra" class="tab-content" style="display:none;">
-  <div class="tool-card">
-    <h2>Extra Tools</h2>
-    <div class="tool-row">
-      <div class="tool-block">
-        <label for="whoisurl"><strong>WHOIS Lookup</strong><br><span class="desc">Get WHOIS info for a domain (uses public API).</span></label><br>
-        <input type="text" id="whoisurl" placeholder="e.g. example.com">
-        <button onclick="lookupWHOIS()">Lookup WHOIS</button>
-        <button onclick="copyResult('whoisresult')">📋</button>
-        <pre id="whoisresult"></pre>
-      </div>
-      <div class="tool-block">
-        <label for="sslurl"><strong>SSL Certificate Info</strong><br><span class="desc">Get SSL certificate details for a domain (uses public API).</span></label><br>
-        <input type="text" id="sslurl" placeholder="e.g. example.com">
-        <button onclick="lookupSSL()">Get SSL Info</button>
-        <button onclick="copyResult('sslresult')">📋</button>
-        <pre id="sslresult"></pre>
-      </div>
-    </div>
-    <div class="tool-row">
-      <div class="tool-block">
-        <label><strong>Random Joke</strong><br><span class="desc">Get a random programming joke.</span></label><br>
-        <button onclick="getJoke()">Tell Me a Joke</button>
-        <pre id="jokeResult"></pre>
-      </div>
-      <div class="tool-block">
-        <label><strong>Tech Quote</strong><br><span class="desc">Get a random tech quote.</span></label><br>
-        <button onclick="getQuote()">Inspire Me</button>
-        <pre id="quoteResult"></pre>
-      </div>
-    </div>
-    <hr>
-    <div>
-      <label for="qrinput"><strong>QR Code Generator</strong><br><span class="desc">Generate a QR code for any text or URL.</span></label><br>
-      <input type="text" id="qrinput" placeholder="Enter text or URL">
-      <button onclick="generateQR()">Generate QR</button>
-      <div id="qrResult"></div>
-    </div>
-    <div>
-      <label for="pwlength"><strong>Password Generator</strong><br><span class="desc">Generate a random password.</span></label><br>
-      <input type="number" id="pwlength" min="6" max="32" value="12" style="width:60px;">
-      <button onclick="generatePassword()">Generate</button>
-      <button onclick="copyResult('pwResult')">📋</button>
-      <pre id="pwResult"></pre>
-    </div>
-    <hr>
-    <div>
-      <label for="b64input"><strong>Base64 Encode/Decode</strong><br><span class="desc">Encode or decode text in Base64.</span></label><br>
-      <input type="text" id="b64input" placeholder="Enter text">
-      <button onclick="encodeBase64()">Encode</button>
-      <button onclick="decodeBase64()">Decode</button>
-      <pre id="b64Result"></pre>
-    </div>
-    <div>
-      <label for="colorinput"><strong>Color Picker</strong><br><span class="desc">Pick a color and get its value.</span></label><br>
-      <input type="color" id="colorinput" value="#3399ff" onchange="showColor()">
-      <span id="colorResult" style="margin-left:10px;"></span>
-    </div>
-    <hr>
-    <div>
-      <label for="httpcodeinput"><strong>HTTP Status Code Lookup</strong><br><span class="desc">Enter a code to get its meaning.</span></label><br>
-      <input type="number" id="httpcodeinput" placeholder="e.g. 404" style="width:80px;">
-      <button onclick="lookupHTTPCode()">Lookup</button>
-      <pre id="httpcodeResult"></pre>
-    </div>
-    <hr>
-    <div id="easterEgg" style="display:none;color:#ff0;font-weight:bold;text-align:center;font-size:1.2em;">🎉 You found the secret! 🎉</div>
-  </div>
-</section>
-
-
-
+<div id="footer"><div class="loader" style="text-align:center;padding:1em;"><span>Loading footer...</span></div></div>
 <script src="tools.js"></script>
-
-<footer>&copy; 2025 IT Solutions Digital<br><a href="https://www.linkedin.com/in/zach-skeens-6743b6274/" target="_blank">LinkedIn</a> | <a href="https://github.com/Its-ze" target="_blank"><img src="https://img.shields.io/badge/GitHub-Its--ze-181717?style=for-the-badge&logo=github" alt="GitHub badge"></a><br><img src="https://ghchart.rshah.org/Its-ze" alt="GitHub contribution graph"></footer>
+<script>
+Promise.all([
+  fetch('nav.html').then(r => r.text()).then(html => { document.getElementById('navbar').innerHTML = html; }),
+  fetch('footer.html').then(r => r.text()).then(html => { document.getElementById('footer').innerHTML = html; })
+]).then(() => {
+  document.body.style.opacity = 1;
+});
+</script>
+</body>
+</html>
+// Inject shared footer
+fetch('footer.html')
+  .then(r => r.text())
+  .then(html => { document.getElementById('footer').innerHTML = html; });
+</script>
 </body>
 </html>
 
