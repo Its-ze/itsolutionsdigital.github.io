@@ -9,12 +9,13 @@
 </head>
 
 
+
 <body>
-<nav aria-label="Main navigation"><a href="index.html">🏠 Home</a><a href="services.html">🛠️ Services</a><a href="tools.html" class="active">🧰 Tools</a><a href="contact.html">✉️ Contact</a></nav>
+<nav aria-label="Main navigation" class="main-nav"><a href="index.html">🏠 Home</a><a href="services.html">🛠️ Services</a><a href="tools.html" class="active">🧰 Tools</a><a href="contact.html">✉️ Contact</a></nav>
 
-<h1>IT & Network Tools</h1>
+<h1 class="accent">IT & Network Tools</h1>
 
-<div class="tabs">
+<div class="tabs card">
   <button class="tab-btn active" onclick="showTab('network')">Network & IP</button>
   <button class="tab-btn" onclick="showTab('dns')">DNS</button>
   <button class="tab-btn" onclick="showTab('http')">HTTP</button>
@@ -84,6 +85,14 @@
       <button onclick="viewHeaders()">View Headers</button>
       <button onclick="copyResult('headerresult')">📋</button>
       <pre id="headerresult"></pre>
+    </div>
+  </div>
+</section>
+
+<!-- Ensure script section is closed and deduplicated -->
+<script>
+// ...existing code...
+</script>
     </div>
   </div>
 </section>
