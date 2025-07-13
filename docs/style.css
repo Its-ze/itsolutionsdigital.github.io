@@ -1,4 +1,48 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+﻿body {
+  background: linear-gradient(120deg, #232946 0%, #3399ff 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  margin: 0;
+  animation: fadeInBody 1.2s;
+}
+@keyframes fadeInBody {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.hero.card {
+  box-shadow: 0 4px 24px #0003;
+  margin-bottom: 2em;
+  animation: fadeInHero 1.2s;
+}
+@keyframes fadeInHero {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: none; }
+}
+.accent {
+  font-size: 2.5em;
+  color: #3399ff;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 0.3em;
+}
+.divider {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg,#3399ff 0%,#6ab 100%);
+  border-radius: 2px;
+  margin: 2em auto 2em auto;
+}
+footer {
+  background: #232946;
+  color: #fff;
+  font-size: 0.95em;
+  padding: 1.2em 0 0.7em 0;
+  margin-top: 3em;
+  border-radius: 1em 1em 0 0;
+  box-shadow: 0 -2px 12px #0002;
+  text-align: center;
+}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 body {
   font-family: 'Open Sans', sans-serif;
   max-width: 900px;
