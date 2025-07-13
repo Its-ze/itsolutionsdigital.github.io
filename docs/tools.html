@@ -89,42 +89,36 @@
   </div>
 </section>
 
-<!-- Ensure script section is closed and deduplicated -->
-<script>
-// ...existing code...
-</script>
-    </div>
-  </div>
-</section>
-
-
 <section id="extra" class="tab-content" style="display:none;">
   <div class="tool-card">
     <h2>Extra Tools</h2>
-    <div>
-      <label for="whoisurl"><strong>WHOIS Lookup</strong><br><span class="desc">Get WHOIS info for a domain (uses public API).</span></label><br>
-      <input type="text" id="whoisurl" placeholder="e.g. example.com">
-      <button onclick="lookupWHOIS()">Lookup WHOIS</button>
-      <button onclick="copyResult('whoisresult')">📋</button>
-      <pre id="whoisresult"></pre>
+    <div class="tool-row">
+      <div class="tool-block">
+        <label for="whoisurl"><strong>WHOIS Lookup</strong><br><span class="desc">Get WHOIS info for a domain (uses public API).</span></label><br>
+        <input type="text" id="whoisurl" placeholder="e.g. example.com">
+        <button onclick="lookupWHOIS()">Lookup WHOIS</button>
+        <button onclick="copyResult('whoisresult')">📋</button>
+        <pre id="whoisresult"></pre>
+      </div>
+      <div class="tool-block">
+        <label for="sslurl"><strong>SSL Certificate Info</strong><br><span class="desc">Get SSL certificate details for a domain (uses public API).</span></label><br>
+        <input type="text" id="sslurl" placeholder="e.g. example.com">
+        <button onclick="lookupSSL()">Get SSL Info</button>
+        <button onclick="copyResult('sslresult')">📋</button>
+        <pre id="sslresult"></pre>
+      </div>
     </div>
-    <div>
-      <label for="sslurl"><strong>SSL Certificate Info</strong><br><span class="desc">Get SSL certificate details for a domain (uses public API).</span></label><br>
-      <input type="text" id="sslurl" placeholder="e.g. example.com">
-      <button onclick="lookupSSL()">Get SSL Info</button>
-      <button onclick="copyResult('sslresult')">📋</button>
-      <pre id="sslresult"></pre>
-    </div>
-    <hr>
-    <div>
-      <label><strong>Random Joke</strong><br><span class="desc">Get a random programming joke.</span></label><br>
-      <button onclick="getJoke()">Tell Me a Joke</button>
-      <pre id="jokeResult"></pre>
-    </div>
-    <div>
-      <label><strong>Tech Quote</strong><br><span class="desc">Get a random tech quote.</span></label><br>
-      <button onclick="getQuote()">Inspire Me</button>
-      <pre id="quoteResult"></pre>
+    <div class="tool-row">
+      <div class="tool-block">
+        <label><strong>Random Joke</strong><br><span class="desc">Get a random programming joke.</span></label><br>
+        <button onclick="getJoke()">Tell Me a Joke</button>
+        <pre id="jokeResult"></pre>
+      </div>
+      <div class="tool-block">
+        <label><strong>Tech Quote</strong><br><span class="desc">Get a random tech quote.</span></label><br>
+        <button onclick="getQuote()">Inspire Me</button>
+        <pre id="quoteResult"></pre>
+      </div>
     </div>
     <hr>
     <div>

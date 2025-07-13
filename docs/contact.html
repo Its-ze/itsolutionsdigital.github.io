@@ -15,40 +15,10 @@
   <p>Let's talk about your IT needs. We're ready to help.</p>
 </div>
 <section class="card">
-  <form id="contactForm" style="max-width:400px;margin:0 auto;">
-    <label for="name"><strong>Name</strong></label><br>
-    <input type="text" id="name" name="name" required style="width:100%;margin-bottom:10px;"><br>
-    <label for="email"><strong>Email</strong></label><br>
-    <input type="email" id="email" name="email" required style="width:100%;margin-bottom:10px;"><br>
-    <label for="message"><strong>Message</strong></label><br>
-    <textarea id="message" name="message" rows="5" required style="width:100%;margin-bottom:10px;"></textarea><br>
-    <button type="submit" class="tab-btn accent">Send Message</button>
-    <div id="formStatus" style="margin-top:10px;"></div>
-  </form>
   <p style="margin-top:30px;"><strong>Email:</strong> <a href='mailto:info@itsolutions.digital'>info@itsolutions.digital</a></p>
   <p><strong>Phone:</strong> <a href='tel:+14402019028'>(440) 201-9028</a></p>
 </section>
 <script>
-document.getElementById('contactForm').onsubmit = function(e) {
-  e.preventDefault();
-  var name = document.getElementById('name').value.trim();
-  var email = document.getElementById('email').value.trim();
-  var message = document.getElementById('message').value.trim();
-  var status = document.getElementById('formStatus');
-  if (!name || !email || !message) {
-    status.textContent = 'Please fill out all fields.';
-    status.style.color = '#f66';
-    return;
-  }
-  if (!/^\S+@\S+\.\S+$/.test(email)) {
-    status.textContent = 'Please enter a valid email address.';
-    status.style.color = '#f66';
-    return;
-  }
-  status.textContent = 'Thank you, ' + name + '! Your message has been sent.';
-  status.style.color = '#6ab';
-  document.getElementById('contactForm').reset();
-};
 </script>
 <footer>&copy; 2025 IT Solutions Digital<br><a href="https://www.linkedin.com/in/zach-skeens-6743b6274/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <a href="https://github.com/Its-ze" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/GitHub-Its--ze-181717?style=for-the-badge&logo=github" alt="GitHub badge for Its-ze"></a><br><img src="https://ghchart.rshah.org/Its-ze" alt="GitHub contribution graph for Its-ze"></footer>
 </body></html>
