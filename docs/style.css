@@ -58,10 +58,13 @@ h1, h2 {
 }
 nav {
   background: #2c2c2c;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px #0002;
   border-bottom: 3px solid #3399ff;
   padding: 15px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
   transition: all 0.3s;
   max-width: 900px;
   margin: 0 auto 40px auto;
