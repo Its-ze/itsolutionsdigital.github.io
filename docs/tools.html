@@ -161,35 +161,7 @@
 
 
 
-<script>
-// ...existing code...
-// (script content continues)
-</script>
-// Tab switching
-function showTab(tab) {
-  document.querySelectorAll('.tab-content').forEach(e => e.style.display = 'none');
-  document.querySelectorAll('.tab-btn').forEach(e => e.classList.remove('active'));
-  document.getElementById(tab).style.display = 'block';
-  document.querySelector('.tab-btn[onclick="showTab(\''+tab+'\')"]').classList.add('active');
-}
-
-// Helper: Validate domain
-function isValidDomain(domain) {
-  return /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(domain);
-}
-// Helper: Validate IP
-function isValidIP(ip) {
-  return /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ip);
-}
-// Copy result to clipboard
-function copyResult(id) {
-  const el = document.getElementById(id);
-  if(e.keyCode===konami[kidx]){kidx++;if(kidx===konami.length){document.getElementById('easterEgg').style.display='block';kidx=0;}}
-  else{kidx=0;}
-});
-
-// ...existing code...
-</script>
+<script src="tools.js"></script>
 
 <footer>&copy; 2025 IT Solutions Digital<br><a href="https://www.linkedin.com/in/zach-skeens-6743b6274/" target="_blank">LinkedIn</a> | <a href="https://github.com/Its-ze" target="_blank"><img src="https://img.shields.io/badge/GitHub-Its--ze-181717?style=for-the-badge&logo=github" alt="GitHub badge"></a><br><img src="https://ghchart.rshah.org/Its-ze" alt="GitHub contribution graph"></footer>
 </body>
